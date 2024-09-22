@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "general_informations",
+  "info": {
+    "singularName": "general-information",
+    "pluralName": "general-informations",
+    "displayName": "General Informations"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Tagline": {
+      "type": "text"
+    }
+  }
+}
