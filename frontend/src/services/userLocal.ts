@@ -1,5 +1,4 @@
 import { IUser } from "@/interfaces/IUser";
-import { getAuthToken } from "./token";
 import { getStrapiURL } from "@/lib/utils";
 import Cookies from "js-cookie";
 import qs from "qs";
@@ -13,13 +12,13 @@ const query = qs.stringify({
   },
 });
 
-export async function getUserMeLoader(): Promise<IUser> {
+export async function getUserMeLoaderClient(): Promise<IUser> {
   const baseUrl = getStrapiURL();
 
   const url = new URL("/api/users/me", baseUrl);
   url.search = query;
 
-  const authToken = await getAuthToken();
+  const authToken = Cookies.get("jwt");
 
   if (!authToken)
     return { ok: false, data: null, error: null };

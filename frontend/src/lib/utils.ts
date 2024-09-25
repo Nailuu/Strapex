@@ -10,8 +10,15 @@ export function getStrapiURL() {
 }
 
 export async function getStrapiData(path: string) {
+  const options = {
+    //cache: "no-store",
+    next: {
+      revalidate: 43200, // 12 hours
+    },
+  };
+
   try {
-    const req = await fetch(getStrapiURL() + path, {cache: 'no-store'});
+    const req = await fetch(getStrapiURL() + path, options);
     const res = await req.json();
 
     return (res);

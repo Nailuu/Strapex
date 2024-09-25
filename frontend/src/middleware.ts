@@ -8,10 +8,14 @@ export async function middleware(request: NextRequest) {
 
   if (currentPath.startsWith("/_next")) {
     return NextResponse.next();
-    }
-    
+  }
+
   if (currentPath != "/signin" && currentPath != "/signup" && user.ok === false) {
     return NextResponse.redirect(new URL("/signin", request.url));
+  }
+
+  if ((currentPath == "/signin" || currentPath == "/signup") && user.ok) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();

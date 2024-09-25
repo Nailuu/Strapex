@@ -5,8 +5,8 @@ import { getStrapiData } from "@/lib/utils.ts";
 export async function generateMetadata(): Promise<Metadata> {
   const res = await getStrapiData("/api/general-information");
   
-  const metadata = res.data.attributes;
- 
+  const metadata = res.data;
+  
   return {
     title: metadata.Title,
     description: metadata.Tagline,

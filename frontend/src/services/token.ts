@@ -1,7 +1,6 @@
-import Cookies from "js-cookie";
+import { cookies } from "next/headers";
+
 
 export async function getAuthToken() {
-    const authToken = Cookies.get("jwt");
-
-  return (authToken);
+  return cookies().get("jwt")?.value;
 }
