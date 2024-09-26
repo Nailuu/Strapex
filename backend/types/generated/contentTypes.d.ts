@@ -1,34 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiGeneralInformationGeneralInformation
-  extends Struct.SingleTypeSchema {
-  collectionName: 'general_informations';
-  info: {
-    singularName: 'general-information';
-    pluralName: 'general-informations';
-    displayName: 'general-informations';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Schema.Attribute.String;
-    Tagline: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::general-information.general-information'
-    >;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -514,6 +485,105 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Schema.Attribute.String;
+    Cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    dyn1: Schema.Attribute.DynamicZone<
+      [
+        'idk.image-description',
+        'idk.header-paragraph',
+        'idk.carousel',
+        'idk.paragraph',
+      ]
+    >;
+    dyn2: Schema.Attribute.DynamicZone<
+      [
+        'idk.image-description',
+        'idk.header-paragraph',
+        'idk.carousel',
+        'idk.paragraph',
+      ]
+    >;
+    dyn3: Schema.Attribute.DynamicZone<
+      [
+        'idk.image-description',
+        'idk.header-paragraph',
+        'idk.carousel',
+        'idk.paragraph',
+      ]
+    >;
+    dyn4: Schema.Attribute.DynamicZone<
+      [
+        'idk.image-description',
+        'idk.header-paragraph',
+        'idk.carousel',
+        'idk.paragraph',
+      ]
+    >;
+    dyn5: Schema.Attribute.DynamicZone<
+      [
+        'idk.image-description',
+        'idk.header-paragraph',
+        'idk.carousel',
+        'idk.paragraph',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article.article'
+    >;
+  };
+}
+
+export interface ApiGeneralInformationGeneralInformation
+  extends Struct.SingleTypeSchema {
+  collectionName: 'general_informations';
+  info: {
+    singularName: 'general-information';
+    pluralName: 'general-informations';
+    displayName: 'info';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Schema.Attribute.String;
+    Tagline: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::general-information.general-information'
+    >;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -879,7 +949,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::general-information.general-information': ApiGeneralInformationGeneralInformation;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -890,6 +959,8 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::article.article': ApiArticleArticle;
+      'api::general-information.general-information': ApiGeneralInformationGeneralInformation;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

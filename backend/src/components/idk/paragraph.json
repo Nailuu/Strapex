@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_idk_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "icon": "italic"
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_idk_header_paragraphs",
+  "info": {
+    "displayName": "Header + Paragraph"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Text": {
+      "type": "text"
+    }
+  }
+}

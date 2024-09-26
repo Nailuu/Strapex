@@ -1,8 +1,12 @@
-import { IUser } from "@/interfaces/IUser";
 import { getAuthToken } from "./token";
 import { getStrapiURL } from "@/lib/utils";
-import Cookies from "js-cookie";
 import qs from "qs";
+
+export interface IUser {
+  ok: boolean,
+  data: any,
+  error: any,
+}
 
 const query = qs.stringify({
   fields: ["username", "email"],
@@ -37,7 +41,7 @@ export async function getUserMeLoader(): Promise<IUser> {
     const data = await response.json();
 
     if (data.error)
-        return { ok: false, data: null, error: data.error };
+      return { ok: false, data: null, error: data.error };
     return { ok: true, data: data, error: null };
   } catch (error) {
     return { ok: false, data: null, error: error };

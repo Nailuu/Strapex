@@ -4,7 +4,8 @@
   "info": {
     "singularName": "general-information",
     "pluralName": "general-informations",
-    "displayName": "general-informations"
+    "displayName": "info",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

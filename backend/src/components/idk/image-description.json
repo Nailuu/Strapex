@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_idk_image_descriptions",
+  "info": {
+    "displayName": "Image + Description",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Description": {
+      "type": "text"
+    }
+  }
+}

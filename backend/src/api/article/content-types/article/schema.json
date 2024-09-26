@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "dyn1": {
+      "type": "dynamiczone",
+      "components": [
+        "idk.image-description",
+        "idk.header-paragraph",
+        "idk.carousel",
+        "idk.paragraph"
+      ]
+    },
+    "dyn2": {
+      "type": "dynamiczone",
+      "components": [
+        "idk.image-description",
+        "idk.header-paragraph",
+        "idk.carousel",
+        "idk.paragraph"
+      ]
+    },
+    "dyn3": {
+      "type": "dynamiczone",
+      "components": [
+        "idk.image-description",
+        "idk.header-paragraph",
+        "idk.carousel",
+        "idk.paragraph"
+      ]
+    },
+    "dyn4": {
+      "type": "dynamiczone",
+      "components": [
+        "idk.image-description",
+        "idk.header-paragraph",
+        "idk.carousel",
+        "idk.paragraph"
+      ]
+    },
+    "dyn5": {
+      "type": "dynamiczone",
+      "components": [
+        "idk.image-description",
+        "idk.header-paragraph",
+        "idk.carousel",
+        "idk.paragraph"
+      ]
+    }
+  }
+}

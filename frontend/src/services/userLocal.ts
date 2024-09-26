@@ -1,7 +1,7 @@
-import { IUser } from "@/interfaces/IUser";
 import { getStrapiURL } from "@/lib/utils";
 import Cookies from "js-cookie";
 import qs from "qs";
+import { IUser } from "./user";
 
 const query = qs.stringify({
   fields: ["username", "email"],
@@ -36,7 +36,7 @@ export async function getUserMeLoaderClient(): Promise<IUser> {
     const data = await response.json();
 
     if (data.error)
-        return { ok: false, data: null, error: data.error };
+      return { ok: false, data: null, error: data.error };
     return { ok: true, data: data, error: null };
   } catch (error) {
     return { ok: false, data: null, error: error };
