@@ -14,6 +14,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
+  if (currentPath != "/whitelist" && user.ok && user.data.role.name === "Authenticated") {
+    return NextResponse.redirect(new URL("/whitelist", request.url))
+  }
+
   if ((currentPath == "/signin" || currentPath == "/signup") && user.ok) {
     return NextResponse.redirect(new URL("/", request.url));
   }

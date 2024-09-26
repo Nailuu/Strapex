@@ -39,8 +39,7 @@ export async function getUserMeLoader(): Promise<IUser> {
 
     const data = await response.json();
 
-    // Exclude default role at account creation from accessing website
-    if (data.error || data.role.name === "Authenticated")
+    if (data.error)
       return { ok: false, data: null, error: data.error };
     return { ok: true, data: data, error: null };
   } catch (error) {
