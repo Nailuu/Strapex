@@ -16,7 +16,7 @@ export interface ArticleCardProps {
 
 const ArticleCard = ({ id, title, createdAt, cover }: Readonly<ArticleCardProps>) => {
     return (
-        <Link className="w-[375px]" href={"/articles/" + id}>
+        <Link className="w-[325px] md:w-[350px] xl:w-[375px]" href={"/articles/" + id}>
             <Card className="overflow-hidden group">
                 <AspectRatio ratio={4 / 3} className="overflow-hidden">
                     <Image

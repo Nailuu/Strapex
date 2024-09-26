@@ -50,13 +50,13 @@ export const Header = () => {
     return (<header></header>);
 
   return (
-    <header className={`w-full py-4 px-8 flex items-center ${(user.ok && avatar) ? "justify-between" : "justify-center"}`}>
+    <header className={`w-full py-4 px-8 flex items-center ${(user.ok && avatar) ? "justify-between" : "justify-around md:justify-center"}`}>
       {(user.ok && avatar) && (
-        <div className="w-10" />
+        <div className="md:w-10" />
       )}
       <Link href="/">
         <div className='flex flex-col items-center cursor-pointer' style={{ fontFamily: 'var(--font-jua)' }}>
-          <h1 className="text-3xl text-primary font-bold">{metadata.title}</h1>
+          <h1 className="text-xl md:text-3xl text-primary font-bold">{metadata.title}</h1>
           {metadata.tagline && (
             <p className='text-muted-foreground'>{metadata.tagline}</p>
           )}

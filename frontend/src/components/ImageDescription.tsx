@@ -10,7 +10,7 @@ interface ImageDescriptionProps {
 
 const ImageDescription = ({ image, description }: Readonly<ImageDescriptionProps>) => {
     return (
-        <div className="flex flex-col gap-4 items-center w-[800px] my-4">
+        <div className="flex flex-col gap-4 items-center my-2 md:my-4 w-[310px] md:w-[650px] lg:w-full max-w-[1000px]">
             <AspectRatio ratio={4 / 3} className="overflow-hidden rounded-lg">
                 <Image
                     width={Number(image.width)}
@@ -23,7 +23,7 @@ const ImageDescription = ({ image, description }: Readonly<ImageDescriptionProps
                     quality={70}
                 />
             </AspectRatio>
-            <p className="text-muted-foreground text-md italic px-10">{description}</p>
+            <p className="text-muted-foreground w-full text-sm md:text-md italic px-4 md:px-8">{description}</p>
         </div>
     )
 }

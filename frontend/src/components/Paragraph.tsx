@@ -5,7 +5,7 @@ interface ParagraphProps {
 
 const Paragraph = ({ text }: Readonly<ParagraphProps>) => {
     return (
-        <p>{text}</p>
+        <p className="mx-8 md:mx-0">{text}</p>
     )
 }
 

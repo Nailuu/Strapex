@@ -30,7 +30,7 @@ export function SigninForm() {
   const [formState, formAction] = useFormState(loginUserAction, INITIAL_STATE);
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full max-w-[350px] md:max-w-md md:my-6">
       <form action={formAction}>
         <Card>
           <CardHeader className="space-y-1">

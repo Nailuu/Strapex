@@ -73,7 +73,7 @@ export default function Home() {
       <Header />
       <main className="bg-gray-100 flex-grow">
         <div className="mx-10 my-10 flex flex-col items-center gap-10">
-          <div className="grid grid-cols-3 gap-8 place-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
             {articles && (articles.map((article, index) => (
               <ArticleCard key={index} {...article} />
             )))}
@@ -81,7 +81,7 @@ export default function Home() {
               <ArticleCardSkeleton key={index} />
             )))}
           </div>
-          {(articles && pageCount) && (
+          {(articles && pageCount && pageCount > 1) && (
             <Pagination>
               <PaginationContent>
                 {pagination > 1 && (

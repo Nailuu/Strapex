@@ -22,7 +22,7 @@ interface CarouselProps {
 const Carousel = ({ images, description }: Readonly<CarouselProps>) => {
     return (
         <div className="flex flex-col items-center w-full">
-            <CarouselUI className="w-[800px] my-4">
+            <CarouselUI className="my-2 md:my-4 w-[250px] md:w-[625px] lg:w-full max-w-[1000px]">
                 <CarouselContent>
                     {images.map((image: StrapiImage, index) => (
                         <CarouselItem key={index}>
@@ -44,7 +44,7 @@ const Carousel = ({ images, description }: Readonly<CarouselProps>) => {
                 <CarouselPrevious />
                 <CarouselNext />
             </CarouselUI>
-            <p className="text-muted-foreground text-md italic px-10">{description}</p>
+            <p className="text-muted-foreground text-sm md:text-md italic px-4 md:px-8 w-[250px] md:w-[625px] lg:w-full lg:mx-4 max-w-[1000px]">{description}</p>
         </div>
     )
 }

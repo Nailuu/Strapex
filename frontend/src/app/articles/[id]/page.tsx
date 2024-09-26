@@ -3,11 +3,15 @@ import { Header } from "@/components/Header";
 import HeaderParagraph from "@/components/HeaderParagraph";
 import ImageDescription from "@/components/ImageDescription";
 import Paragraph from "@/components/Paragraph";
+import { Button } from "@/components/ui/button";
 import { getStrapiData, getStrapiURL } from "@/services/data";
 import { getAuthToken } from "@/services/token";
+import { getUserMeLoader, IUser } from "@/services/user";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { FilePenLine } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import qs from "qs";
 
 interface ArticleProps {
@@ -102,6 +106,8 @@ const Article = async ({ params }: ArticleProps) => {
     const res = await getStrapiData(`/api/articles/${params.id}`, query, authToken);
     const data = res.data;
 
+    const user: IUser = await getUserMeLoader();
+
     const date = new Intl.DateTimeFormat('fr-FR', {
         day: '2-digit',
         month: '2-digit',
@@ -113,10 +119,10 @@ const Article = async ({ params }: ArticleProps) => {
     return (
         <div className="flex flex-col min-h-screen" style={{ fontFamily: 'var(--font-jua)' }}>
             <Header />
-            <div className="bg-gray-100 flex-grow">
-                <div className="my-12 mx-20 flex flex-col items-center gap-4">
+            <div className="bg-gray-100 flex-grow pb-8">
+                <div className="lg:my-12 md:mx-12 lg:mx-20 flex flex-col items-center gap-2 md:gap-4 lg:gap-8">
                     <div className="w-full">
-                        <AspectRatio ratio={4 / 2} className="overflow-hidden rounded-md">
+                        <AspectRatio ratio={4 / 2} className="overflow-hidden lg:rounded-md">
                             <Image
                                 width={data.Cover.width}
                                 height={data.Cover.height}
@@ -129,11 +135,19 @@ const Article = async ({ params }: ArticleProps) => {
                             />
                         </AspectRatio>
                     </div>
-                    <div className="flex flex-col items-center my-6">
-                        <h2 className="text-4xl">{data.Title}</h2>
-                        <p className="text-muted-foreground">{date}</p>
+                    <div className="flex flex-col items-center my-2 md:my-6">
+                        <h2 className="text-3xl md:text-4xl">{data.Title}</h2>
+                        <p className="text-sm text-muted-foreground">{date}</p>
+                        {user.data.role.name === "Owner" && (
+                            <Button asChild className="my-4">
+                                <Link href={`${getStrapiURL()}/admin/content-manager/collection-types/api::article.article/${params.id}`} target="_blank">
+                                    <FilePenLine className="mr-2 h-4 w-4" />
+                                    Edit Article
+                                </Link>
+                            </Button>
+                        )}
                     </div>
-                    <div className="flex flex-col items-center gap-12 text-lg text-justify">
+                    <div className="flex flex-col items-center gap-12 md:text-lg text-justify w-full max-w-[1200px]">
                         {data.Content.map((item: ContentItem) => renderContent(item))}
                     </div>
                 </div>
