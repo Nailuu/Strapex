@@ -1,7 +1,7 @@
 "use client";
 
-import Article, { ArticleProps } from "@/components/Article";
-import ArticleSkeleton from "@/components/ArticleSkeleton";
+import ArticleCard, { ArticleCardProps } from "@/components/ArticleCard";
+import ArticleCardSkeleton from "@/components/ArticleCardSkeleton";
 import { Header } from "@/components/Header";
 import {
   Pagination,
@@ -12,14 +12,16 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-import { getStrapiData, getStrapiURL } from "@/lib/utils";
-import qs from "qs";
+import { getStrapiData, getStrapiURL } from "@/services/data";
 import { useEffect, useState } from "react";
+import qs from "qs";
+import Cookies from "js-cookie";
 
 const baseUrl = getStrapiURL();
+const authToken = Cookies.get("jwt");
 
 export default function Home() {
-  const [articles, setArticles] = useState<ArticleProps[] | null>(null);
+  const [articles, setArticles] = useState<ArticleCardProps[] | null>(null);
   const [pagination, setPagination] = useState(1);
   const [pageCount, setPageCount] = useState(0);
 
@@ -38,9 +40,9 @@ export default function Home() {
       sort: "createdAt:desc",
     });
 
-    getStrapiData("/api/articles", query)
+    getStrapiData("/api/articles", query, authToken)
       .then((res) => {
-        const data: ArticleProps[] = [];
+        const data: ArticleCardProps[] = [];
 
         res.data.forEach((e: any) => {
           const date = new Intl.DateTimeFormat('fr-FR', {
@@ -73,10 +75,10 @@ export default function Home() {
         <div className="mx-10 my-10 flex flex-col items-center gap-10">
           <div className="grid grid-cols-3 gap-8 place-items-center">
             {articles && (articles.map((article, index) => (
-              <Article key={index} {...article} />
+              <ArticleCard key={index} {...article} />
             )))}
             {!articles && (Array.from({ length: 6 }, (_, index) => (
-              <ArticleSkeleton key={index} />
+              <ArticleCardSkeleton key={index} />
             )))}
           </div>
           {(articles && pageCount) && (

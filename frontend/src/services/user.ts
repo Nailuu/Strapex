@@ -1,5 +1,5 @@
+import { getStrapiURL } from "./data";
 import { getAuthToken } from "./token";
-import { getStrapiURL } from "@/lib/utils";
 import qs from "qs";
 
 export interface IUser {
@@ -35,7 +35,6 @@ export async function getUserMeLoader(): Promise<IUser> {
         "Content-Type": "application/json",
         Authorization: `Bearer ${authToken}`,
       },
-      cache: "no-cache",
     });
 
     const data = await response.json();

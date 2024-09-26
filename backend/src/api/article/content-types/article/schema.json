@@ -26,50 +26,15 @@
         "audios"
       ]
     },
-    "dyn1": {
+    "Content": {
       "type": "dynamiczone",
       "components": [
         "idk.image-description",
         "idk.header-paragraph",
         "idk.carousel",
         "idk.paragraph"
-      ]
-    },
-    "dyn2": {
-      "type": "dynamiczone",
-      "components": [
-        "idk.image-description",
-        "idk.header-paragraph",
-        "idk.carousel",
-        "idk.paragraph"
-      ]
-    },
-    "dyn3": {
-      "type": "dynamiczone",
-      "components": [
-        "idk.image-description",
-        "idk.header-paragraph",
-        "idk.carousel",
-        "idk.paragraph"
-      ]
-    },
-    "dyn4": {
-      "type": "dynamiczone",
-      "components": [
-        "idk.image-description",
-        "idk.header-paragraph",
-        "idk.carousel",
-        "idk.paragraph"
-      ]
-    },
-    "dyn5": {
-      "type": "dynamiczone",
-      "components": [
-        "idk.image-description",
-        "idk.header-paragraph",
-        "idk.carousel",
-        "idk.paragraph"
-      ]
+      ],
+      "required": true
     }
   }
 }

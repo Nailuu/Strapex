@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { getStrapiData } from "@/lib/utils.ts";
 import { Jua } from "next/font/google";
+import { getStrapiData } from "@/services/data";
+import qs from "qs";
+
+const query = qs.stringify({
+  fields: ["Title", "Tagline"],
+});
 
 export async function generateMetadata(): Promise<Metadata> {
-  const res = await getStrapiData("/api/general-information");
+  const res = await getStrapiData("/api/general-information", query);
 
   const metadata = res.data;
 

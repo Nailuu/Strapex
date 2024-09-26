@@ -1,7 +1,9 @@
 {
   "collectionName": "components_idk_header_paragraphs",
   "info": {
-    "displayName": "Header + Paragraph"
+    "displayName": "Header + Paragraph",
+    "icon": "quote",
+    "description": ""
   },
   "options": {},
   "attributes": {

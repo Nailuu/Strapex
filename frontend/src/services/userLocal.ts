@@ -1,7 +1,7 @@
-import { getStrapiURL } from "@/lib/utils";
 import Cookies from "js-cookie";
 import qs from "qs";
 import { IUser } from "./user";
+import { getStrapiURL } from "./data";
 
 const query = qs.stringify({
   fields: ["username", "email"],
@@ -30,7 +30,6 @@ export async function getUserMeLoaderClient(): Promise<IUser> {
         "Content-Type": "application/json",
         Authorization: `Bearer ${authToken}`,
       },
-      cache: "no-cache",
     });
 
     const data = await response.json();

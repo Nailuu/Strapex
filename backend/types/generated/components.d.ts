@@ -27,6 +27,8 @@ export interface IdkHeaderParagraph extends Struct.ComponentSchema {
   collectionName: 'components_idk_header_paragraphs';
   info: {
     displayName: 'Header + Paragraph';
+    icon: 'quote';
+    description: '';
   };
   attributes: {
     Title: Schema.Attribute.String;
@@ -37,14 +39,16 @@ export interface IdkHeaderParagraph extends Struct.ComponentSchema {
 export interface IdkCarousel extends Struct.ComponentSchema {
   collectionName: 'components_idk_carousels';
   info: {
-    displayName: 'Carousel';
+    displayName: 'Carousel + Description';
     icon: 'grid';
+    description: '';
   };
   attributes: {
     Images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    Description: Schema.Attribute.Text;
   };
 }
 

@@ -499,46 +499,15 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   attributes: {
     Title: Schema.Attribute.String;
     Cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    dyn1: Schema.Attribute.DynamicZone<
+    Content: Schema.Attribute.DynamicZone<
       [
         'idk.image-description',
         'idk.header-paragraph',
         'idk.carousel',
         'idk.paragraph',
       ]
-    >;
-    dyn2: Schema.Attribute.DynamicZone<
-      [
-        'idk.image-description',
-        'idk.header-paragraph',
-        'idk.carousel',
-        'idk.paragraph',
-      ]
-    >;
-    dyn3: Schema.Attribute.DynamicZone<
-      [
-        'idk.image-description',
-        'idk.header-paragraph',
-        'idk.carousel',
-        'idk.paragraph',
-      ]
-    >;
-    dyn4: Schema.Attribute.DynamicZone<
-      [
-        'idk.image-description',
-        'idk.header-paragraph',
-        'idk.carousel',
-        'idk.paragraph',
-      ]
-    >;
-    dyn5: Schema.Attribute.DynamicZone<
-      [
-        'idk.image-description',
-        'idk.header-paragraph',
-        'idk.carousel',
-        'idk.paragraph',
-      ]
-    >;
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

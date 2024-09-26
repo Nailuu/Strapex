@@ -1,20 +1,25 @@
 {
   "collectionName": "components_idk_carousels",
   "info": {
-    "displayName": "Carousel",
-    "icon": "grid"
+    "displayName": "Carousel + Description",
+    "icon": "grid",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "Description": {
+      "type": "text"
     }
   }
 }

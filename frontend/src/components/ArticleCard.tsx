@@ -3,7 +3,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import Image from "next/image"
 import Link from 'next/link';
 
-export interface ArticleProps {
+export interface ArticleCardProps {
     id: string;
     title: string;
     createdAt: string;
@@ -14,11 +14,11 @@ export interface ArticleProps {
     };
 }
 
-const Article = ({ id, title, createdAt, cover }: Readonly<ArticleProps>) => {
+const ArticleCard = ({ id, title, createdAt, cover }: Readonly<ArticleCardProps>) => {
     return (
         <Link className="w-[375px]" href={"/articles/" + id}>
             <Card className="overflow-hidden group">
-                <AspectRatio ratio={16 / 9} className="overflow-hidden">
+                <AspectRatio ratio={4 / 3} className="overflow-hidden">
                     <Image
                         width={cover.width}
                         height={cover.height}
@@ -39,4 +39,4 @@ const Article = ({ id, title, createdAt, cover }: Readonly<ArticleProps>) => {
     );
 }
 
-export default Article
+export default ArticleCard

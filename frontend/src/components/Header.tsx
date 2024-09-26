@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
-import { getStrapiData, getStrapiURL } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { createAvatar } from '@dicebear/core';
 import type { Result } from '@dicebear/core';
@@ -11,6 +10,15 @@ import { FileSliders, LogOut } from 'lucide-react';
 import { logoutAction } from '@/actions/auth-actions';
 import { getUserMeLoaderClient } from '@/services/userLocal';
 import { IUser } from '@/services/user';
+import { getStrapiData, getStrapiURL } from '@/services/data';
+import qs from "qs";
+import Link from 'next/link';
+
+const baseURL: string = getStrapiURL();
+
+const query = qs.stringify({
+  fields: ["Title", "Tagline"],
+});
 
 export const Header = () => {
   const [metadata, setMetadata] = useState<{ title: string, tagline: string | null } | null>(null);
@@ -18,7 +26,7 @@ export const Header = () => {
   const [avatar, setAvatar] = useState<Result | null>(null);
 
   useEffect(() => {
-    getStrapiData("/api/general-information")
+    getStrapiData("/api/general-information", query)
       .then((res) => setMetadata({
         title: res.data.Title,
         tagline: res.data.Tagline === "" ? null : res.data.Tagline
@@ -46,12 +54,14 @@ export const Header = () => {
       {(user.ok && avatar) && (
         <div className="w-10" />
       )}
-      <div className='flex flex-col items-center' style={{ fontFamily: 'var(--font-jua)' }}>
-        <h1 className="text-3xl text-primary font-bold">{metadata.title}</h1>
-        {metadata.tagline && (
-          <p className='text-muted-foreground'>{metadata.tagline}</p>
-        )}
-      </div>
+      <Link href="/">
+        <div className='flex flex-col items-center cursor-pointer' style={{ fontFamily: 'var(--font-jua)' }}>
+          <h1 className="text-3xl text-primary font-bold">{metadata.title}</h1>
+          {metadata.tagline && (
+            <p className='text-muted-foreground'>{metadata.tagline}</p>
+          )}
+        </div>
+      </Link>
       {(user.ok && avatar) && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -65,7 +75,7 @@ export const Header = () => {
               <DropdownMenuLabel>{user.data.username} ({user.data.email})</DropdownMenuLabel>
               <DropdownMenuSeparator />
               {user.data?.role?.name === "Owner" && (
-                <a href={getStrapiURL()} target="_blank">
+                <a href={baseURL + "/admin/content-manager/collection-types/api::article.article"} target="_blank">
                   <DropdownMenuItem className='cursor-pointer'>
                     <FileSliders className="mr-2 h-4 w-4" />
                     <span>Admin Panel</span>
