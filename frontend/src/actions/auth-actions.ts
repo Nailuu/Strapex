@@ -22,7 +22,7 @@ const config = {
   path: "/",
   domain: process.env.HOST ?? "localhost",
   // httpOnly: true, /* CANNOT USE js-cookie if true */
-  secure: process.env.NODE_ENV === "production",
+  // secure: process.env.NODE_ENV === "production",
   sameSite: "none" as "none",
 };
 

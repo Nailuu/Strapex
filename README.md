@@ -28,3 +28,5 @@ When the strapi service is up and running, follow theses steps:
     - Users-permissions:
         - user -> me
         - role -> find
+
+add HOST in .env in frontend/
