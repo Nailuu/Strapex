@@ -9,19 +9,25 @@ jobs:
 
     runs-on: self-hosted
 
+    defaults:
+      run:
+        working-directory: 'frontend'
+
     strategy:
       matrix:
         node-version: [20.17.0]
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
-      working-directory: frontend
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-      working-directory: frontend
-    - run: npm run build --if-present
-      working-directory: frontend
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build project
+      run: npm run build --if-present
