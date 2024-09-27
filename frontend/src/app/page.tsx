@@ -12,12 +12,11 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-import { getStrapiData, getStrapiLocalURL } from "@/services/data";
+import { getStrapiData, getStrapiExternalURL, getStrapiLocalURL } from "@/services/data";
 import { useEffect, useState } from "react";
 import qs from "qs";
 import Cookies from "js-cookie";
 
-const baseUrl = getStrapiLocalURL();
 const authToken = Cookies.get("jwt");
 
 export default function Home() {
@@ -56,7 +55,7 @@ export default function Home() {
             title: e?.Title,
             createdAt: date,
             cover: {
-              url: baseUrl + e?.Cover.url,
+              url: getStrapiLocalURL() + e?.Cover.url,
               width: e?.Cover.width as number,
               height: e?.Cover.height as number,
             },

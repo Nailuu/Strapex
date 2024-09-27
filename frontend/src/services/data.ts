@@ -3,14 +3,21 @@ export function getStrapiLocalURL() {
 }
 
 export function getStrapiExternalURL() {
-    return "http://manon-cooking-garden.ovh:8080";
+    return "https://manon-cooking-garden.ovh/strapi";
 }
 
 // bearer = true, only works in client component because of cookies recovery library
 export async function getStrapiData(path: string, qs: string, authToken: string | undefined = undefined) {
-    const baseUrl = getStrapiLocalURL();
+    let baseURL: string;
 
-    const url = new URL(path, baseUrl);
+    const isClient = typeof window !== 'undefined';
+
+    if (isClient)
+        baseURL = getStrapiExternalURL();
+    else
+        baseURL = getStrapiLocalURL();
+    
+    const url = new URL(path, baseURL);
     url.search = qs;
 
     const options: RequestInit = {

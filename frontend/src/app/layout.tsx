@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Jua } from "next/font/google";
-import { getStrapiData } from "@/services/data";
+import { getStrapiData, getStrapiLocalURL } from "@/services/data";
 import qs from "qs";
 
 const query = qs.stringify({
