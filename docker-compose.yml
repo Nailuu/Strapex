@@ -1,0 +1,41 @@
+services:
+  strapi:
+    container_name: strapi
+    build: ./backend/.
+    image: strapi:latest
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./package-lock.json:/opt/package-lock.json
+
+      - ./.env:/opt/app/.env
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - '8080:8080'
+    networks:
+      - app
+    depends_on:
+      - mysql
+      
+  mysql:
+    container_name: mysql
+    restart: unless-stopped
+    env_file: .env
+    image: mysql:8.0
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - strapi-data:/var/lib/mysql
+    expose:
+      - '3306'
+    networks:
+      - app
+
+volumes:
+  strapi-data:
+
+networks:
+  app:
+    driver: bridge

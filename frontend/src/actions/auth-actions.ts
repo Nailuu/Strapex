@@ -23,7 +23,7 @@ const config = {
   domain: process.env.HOST ?? "localhost",
   // httpOnly: true, /* CANNOT USE js-cookie if true */
   secure: process.env.NODE_ENV === "production",
-  sameSite: "none",
+  sameSite: "none" as "none",
 };
 
 export async function registerUserAction(prevState: any, formData: FormData) {
