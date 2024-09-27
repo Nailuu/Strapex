@@ -1,5 +1,5 @@
 import { StrapiImage } from "@/app/articles/[id]/page";
-import { getStrapiLocalURL } from "@/services/data";
+import { getStrapiExternalURL } from "@/services/data";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ const ImageDescription = ({ image, description }: Readonly<ImageDescriptionProps
                     width={Number(image.width)}
                     height={Number(image.height)}
                     className="object-cover w-full h-full"
-                    src={getStrapiLocalURL() + image.url}
+                    src={getStrapiExternalURL() + image.url}
                     alt=""
                     placeholder="blur"
                     blurDataURL="placeholder.jpg"

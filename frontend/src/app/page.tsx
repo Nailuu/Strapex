@@ -55,7 +55,7 @@ export default function Home() {
             title: e?.Title,
             createdAt: date,
             cover: {
-              url: getStrapiLocalURL() + e?.Cover.url,
+              url: getStrapiExternalURL() + e?.Cover.url,
               width: e?.Cover.width as number,
               height: e?.Cover.height as number,
             },

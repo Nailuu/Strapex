@@ -127,7 +127,7 @@ const Article = async ({ params }: ArticleProps) => {
                                 width={data.Cover.width}
                                 height={data.Cover.height}
                                 className="object-cover w-full h-full"
-                                src={getStrapiLocalURL() + data.Cover.url}
+                                src={getStrapiExternalURL() + data.Cover.url}
                                 alt=""
                                 placeholder="blur"
                                 blurDataURL="placeholder.jpg"
