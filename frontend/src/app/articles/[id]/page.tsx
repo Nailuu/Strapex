@@ -10,7 +10,6 @@ import { getUserMeLoader, IUser } from "@/services/user";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { FilePenLine } from "lucide-react";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import qs from "qs";
 
@@ -123,15 +122,12 @@ const Article = async ({ params }: ArticleProps) => {
                 <div className="lg:my-12 md:mx-12 lg:mx-20 flex flex-col items-center gap-2 md:gap-4 lg:gap-8">
                     <div className="w-full">
                         <AspectRatio ratio={4 / 2} className="overflow-hidden lg:rounded-md">
-                            <Image
+                            <img
                                 width={data.Cover.width}
                                 height={data.Cover.height}
                                 className="object-cover w-full h-full"
                                 src={getStrapiExternalURL() + data.Cover.url}
-                                alt=""
-                                placeholder="blur"
-                                blurDataURL="placeholder.jpg"
-                                quality={70}
+                                alt={data.Title}
                             />
                         </AspectRatio>
                     </div>
