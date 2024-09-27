@@ -10,7 +10,6 @@ import {
 import { StrapiImage } from "@/app/articles/[id]/page"
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { getStrapiExternalURL } from "@/services/data";
-import Image from "next/image";
 
 interface CarouselProps {
     images: StrapiImage[];
@@ -25,15 +24,11 @@ const Carousel = ({ images, description }: Readonly<CarouselProps>) => {
                     {images.map((image: StrapiImage, index) => (
                         <CarouselItem key={index}>
                             <AspectRatio ratio={4 / 3} className="overflow-hidden rounded-lg">
-                                <Image
+                                <img
                                     width={Number(image.width)}
                                     height={Number(image.height)}
                                     className="object-cover w-full h-full"
                                     src={getStrapiExternalURL() + image.url}
-                                    alt=""
-                                    placeholder="blur"
-                                    blurDataURL="placeholder.jpg"
-                                    quality={70}
                                 />
                             </AspectRatio>
                         </CarouselItem>
