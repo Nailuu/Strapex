@@ -32,7 +32,7 @@ jobs:
       working-directory: frontend
 
     - name: Change directory to PM2 process
-      run: cd /actions-runner/_work/Strapex/Strapex/frontend
+      run: cd /home/ubuntu/actions-runner/_work/Strapex/Strapex/frontend
 
     - name: Restart PM2 process
       run: pm2 restart 0
