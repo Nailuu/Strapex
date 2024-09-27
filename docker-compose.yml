@@ -5,21 +5,13 @@ services:
     image: strapi:latest
     restart: unless-stopped
     env_file: .env
-    volumes:
-      - ./config:/opt/app/config
-      - ./src:/opt/app/src
-      - ./package.json:/opt/package.json
-      - ./package-lock.json:/opt/package-lock.json
-
-      - ./.env:/opt/app/.env
-      - ./public/uploads:/opt/app/public/uploads
     ports:
       - '8080:8080'
     networks:
       - app
     depends_on:
       - mysql
-      
+
   mysql:
     container_name: mysql
     restart: unless-stopped
@@ -35,6 +27,7 @@ services:
 
 volumes:
   strapi-data:
+
 
 networks:
   app:
