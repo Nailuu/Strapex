@@ -1,4 +1,4 @@
-import { getStrapiURL } from "./data";
+import { getStrapiLocalURL } from "./data";
 import { getAuthToken } from "./token";
 import qs from "qs";
 
@@ -18,7 +18,7 @@ const query = qs.stringify({
 });
 
 export async function getUserMeLoader(): Promise<IUser> {
-  const baseUrl = getStrapiURL();
+  const baseUrl = getStrapiLocalURL();
 
   const url = new URL("/api/users/me", baseUrl);
   url.search = query;

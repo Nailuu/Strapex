@@ -12,7 +12,7 @@ import { StrapiImage } from "@/app/articles/[id]/page"
 import { Card, CardContent } from "./ui/card";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
-import { getStrapiURL } from "@/services/data";
+import { getStrapiExternalURL } from "@/services/data";
 
 interface CarouselProps {
     images: StrapiImage[];
@@ -31,7 +31,7 @@ const Carousel = ({ images, description }: Readonly<CarouselProps>) => {
                                     width={Number(image.width)}
                                     height={Number(image.height)}
                                     className="object-cover w-full h-full"
-                                    src={getStrapiURL() + image.url}
+                                    src={getStrapiExternalURL() + image.url}
                                     alt=""
                                     placeholder="blur"
                                     blurDataURL="placeholder.jpg"

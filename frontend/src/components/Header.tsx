@@ -10,11 +10,11 @@ import { FileSliders, LogOut } from 'lucide-react';
 import { logoutAction } from '@/actions/auth-actions';
 import { getUserMeLoaderClient } from '@/services/userLocal';
 import { IUser } from '@/services/user';
-import { getStrapiData, getStrapiURL } from '@/services/data';
+import { getStrapiData, getStrapiExternalURL } from '@/services/data';
 import qs from "qs";
 import Link from 'next/link';
 
-const baseURL: string = getStrapiURL();
+const baseURL: string = getStrapiExternalURL();
 
 const query = qs.stringify({
   fields: ["Title", "Tagline"],

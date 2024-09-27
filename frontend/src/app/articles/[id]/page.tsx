@@ -4,7 +4,7 @@ import HeaderParagraph from "@/components/HeaderParagraph";
 import ImageDescription from "@/components/ImageDescription";
 import Paragraph from "@/components/Paragraph";
 import { Button } from "@/components/ui/button";
-import { getStrapiData, getStrapiURL } from "@/services/data";
+import { getStrapiData, getStrapiExternalURL, getStrapiLocalURL } from "@/services/data";
 import { getAuthToken } from "@/services/token";
 import { getUserMeLoader, IUser } from "@/services/user";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
@@ -127,7 +127,7 @@ const Article = async ({ params }: ArticleProps) => {
                                 width={data.Cover.width}
                                 height={data.Cover.height}
                                 className="object-cover w-full h-full"
-                                src={getStrapiURL() + data.Cover.url}
+                                src={getStrapiLocalURL() + data.Cover.url}
                                 alt=""
                                 placeholder="blur"
                                 blurDataURL="placeholder.jpg"
@@ -140,7 +140,7 @@ const Article = async ({ params }: ArticleProps) => {
                         <p className="text-sm text-muted-foreground">{date}</p>
                         {user.data.role.name === "Owner" && (
                             <Button asChild className="my-4">
-                                <Link href={`${getStrapiURL()}/admin/content-manager/collection-types/api::article.article/${params.id}`} target="_blank">
+                                <Link href={`${getStrapiExternalURL()}/admin/content-manager/collection-types/api::article.article/${params.id}`} target="_blank">
                                     <FilePenLine className="mr-2 h-4 w-4" />
                                     Edit Article
                                 </Link>

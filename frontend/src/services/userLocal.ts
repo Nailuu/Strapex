@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import qs from "qs";
 import { IUser } from "./user";
-import { getStrapiURL } from "./data";
+import { getStrapiExternalURL } from "./data";
 
 const query = qs.stringify({
   fields: ["username", "email"],
@@ -13,7 +13,7 @@ const query = qs.stringify({
 });
 
 export async function getUserMeLoaderClient(): Promise<IUser> {
-  const baseUrl = getStrapiURL();
+  const baseUrl = getStrapiExternalURL();
 
   const url = new URL("/api/users/me", baseUrl);
   url.search = query;
