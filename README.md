@@ -62,3 +62,6 @@ MYSQL_PASSWORD=superprotected
 MYSQL_DATABASE=strapi
 MYSQL_ROOT_HOST=127.0.0.1
 ```
+
+GitHub Actions CI/CD
+`https://www.youtube.com/watch?v=fkzpywlJcMA`

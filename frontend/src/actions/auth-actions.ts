@@ -22,7 +22,7 @@ const config = {
   path: "/",
   domain: "manon-cooking-garden.ovh",
   // httpOnly: true, /* CANNOT USE js-cookie if true */
-  // secure: process.env.NODE_ENV === "production",
+  secure: true,
   sameSite: "none" as "none",
 };
 
