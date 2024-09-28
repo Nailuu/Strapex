@@ -3,7 +3,7 @@ export function getStrapiLocalURL() {
 }
 
 export function getStrapiExternalURL() {
-    return "https://" + process.env.HOST;
+    return "https://manon-cooking-garden.ovh";
 }
 
 // bearer = true, only works in client component because of cookies recovery library

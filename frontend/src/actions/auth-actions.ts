@@ -20,9 +20,9 @@ const schemaRegister = z.object({
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: "/",
-  domain: process.env.HOST,
+  domain: "manon-cooking-garden.ovh",
   // httpOnly: true, /* CANNOT USE js-cookie if true */
-  secure: process.env.NODE_ENV === "production",
+  secure: true,
   sameSite: "none" as "none",
 };
 
