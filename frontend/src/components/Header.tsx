@@ -56,16 +56,16 @@ export const Header = () => {
       )}
       <Link href="/">
         <div className='flex flex-col items-center cursor-pointer' style={{ fontFamily: 'var(--font-jua)' }}>
-          <h1 className="text-xl md:text-3xl text-primary font-bold">{metadata.title}</h1>
+          <h1 className="text-xl md:text-3xl 2xl:text-4xl text-primary font-bold">{metadata.title}</h1>
           {metadata.tagline && (
-            <p className='text-muted-foreground'>{metadata.tagline}</p>
+            <p className='text-muted-foreground 2xl:text-lg'>{metadata.tagline}</p>
           )}
         </div>
       </Link>
       {(user.ok && avatar) && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Avatar className="w-10 h-10">
+            <Avatar className="w-10 2xl:h-12 h-10 2xl:h-12">
               <AvatarImage className='rounded-full' src={avatar.toDataUri()} alt="User avatar" />
               <AvatarFallback>?</AvatarFallback>
             </Avatar>

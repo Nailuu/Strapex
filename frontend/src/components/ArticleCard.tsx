@@ -5,7 +5,7 @@ import Link from 'next/link';
 export interface ArticleCardProps {
     id: string;
     title: string;
-    createdAt: string;
+    updatedAt: string;
     cover: {
         url: string;
         width: number;
@@ -13,9 +13,9 @@ export interface ArticleCardProps {
     };
 }
 
-const ArticleCard = ({ id, title, createdAt, cover }: Readonly<ArticleCardProps>) => {
+const ArticleCard = ({ id, title, updatedAt, cover }: Readonly<ArticleCardProps>) => {
     return (
-        <Link className="w-[325px] lg:w-[350px] xl:w-[375px]" href={"/articles/" + id}>
+        <Link className="w-[325px] xl:w-[375px] 2xl:w-[425px]" href={"/articles/" + id}>
             <Card className="overflow-hidden group">
                 <AspectRatio ratio={4 / 3} className="overflow-hidden">
                     <img
@@ -27,7 +27,7 @@ const ArticleCard = ({ id, title, createdAt, cover }: Readonly<ArticleCardProps>
                     />
                 </AspectRatio>
                 <CardFooter className="py-3 px-6 bg-secondary flex flex-col items-start" style={{ fontFamily: 'var(--font-jua)' }}>
-                    <p className="text-sm text-muted-foreground">{createdAt}</p>
+                    <p className="text-sm text-muted-foreground">{updatedAt}</p>
                     <h3 className="text-xl font-semibold truncate max-w-full">{title}</h3>
                 </CardFooter>
             </Card>

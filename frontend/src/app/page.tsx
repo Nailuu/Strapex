@@ -30,13 +30,13 @@ export default function Home() {
         page: pagination,
         pageSize: 6,
       },
-      fields: ["Title", "createdAt"],
+      fields: ["Title", "updatedAt"],
       populate: {
         Cover: {
           fields: ["url", "width", "height"],
         },
       },
-      sort: "createdAt:desc",
+      sort: "updatedAt:desc",
     });
 
     getStrapiData("/api/articles", query, authToken)
@@ -48,12 +48,12 @@ export default function Home() {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
-          }).format(new Date(e?.createdAt));
+          }).format(new Date(e?.updatedAt));
 
           data.push({
             id: e?.documentId,
             title: e?.Title,
-            createdAt: date,
+            updatedAt: date,
             cover: {
               url: getStrapiExternalURL() + e?.Cover.url,
               width: e?.Cover.width as number,

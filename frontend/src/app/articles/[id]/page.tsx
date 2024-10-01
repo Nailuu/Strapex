@@ -61,7 +61,7 @@ const renderContent = (content: ContentItem) => {
 };
 
 const query = qs.stringify({
-    fields: ["Title", "createdAt"],
+    fields: ["Title", "updatedAt"],
     populate: {
         Cover: {
             fields: ["url", "width", "height"],
@@ -113,7 +113,7 @@ const Article = async ({ params }: ArticleProps) => {
         year: 'numeric',
         hour: "numeric",
         minute: "numeric",
-    }).format(new Date(data.createdAt));
+    }).format(new Date(data.updatedAt));
 
     return (
         <div className="flex flex-col min-h-screen" style={{ fontFamily: 'var(--font-jua)' }}>
@@ -131,9 +131,9 @@ const Article = async ({ params }: ArticleProps) => {
                             />
                         </AspectRatio>
                     </div>
-                    <div className="flex flex-col items-center my-2 md:my-6">
-                        <h2 className="text-3xl md:text-4xl">{data.Title}</h2>
-                        <p className="text-sm text-muted-foreground">{date}</p>
+                    <div className="flex flex-col items-center my-2 md:my-6 xl:gap-2">
+                        <h2 className="text-3xl md:text-4xl xl:text-5xl">{data.Title}</h2>
+                        <p className="text-sm text-muted-foreground xl:text-lg">{date}</p>
                         {user.data.role.name === "Owner" && (
                             <Button asChild className="my-4">
                                 <Link href={`${getStrapiExternalURL()}/admin/content-manager/collection-types/api::article.article/${params.id}`} target="_blank">

@@ -21,10 +21,10 @@ export async function getStrapiData(path: string, qs: string, authToken: string 
     url.search = qs;
 
     const options: RequestInit = {
-        // cache: "no-store",
-        next: {
-            revalidate: 3600,
-        },
+        cache: "no-store",
+        // next: {
+        //     revalidate: 3600,
+        // },
         headers: {
             ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
         },
