@@ -10,7 +10,6 @@ services:
       - strapi-data:/opt/app/src
       - strapi-data:/opt/package.json
       - strapi-data:/opt/package-lock.json
-      - strapi-data:/opt/app/.env
       - strapi-data:/opt/app/public/uploads
     ports:
       - '8080:8080'
