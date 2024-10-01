@@ -24,6 +24,8 @@ COPY --from=build /opt/app ./
 ENV PATH /opt/node_modules/.bin:$PATH
 
 RUN chown -R node:node /opt/app
+RUN mkdir -p /opt/app/public/uploads/
+RUN chmod g+s /opt/app/public/uploads/
 RUN chown -R node:node /opt/app/public/uploads/
 
 USER node
