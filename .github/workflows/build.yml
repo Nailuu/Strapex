@@ -39,6 +39,30 @@ jobs:
         echo MYSQL_PASSWORD=${{secrets.MYSQL_PASSWORD}} >> .env
         echo MYSQL_DATABASE=${{secrets.MYSQL_DATABASE}} >> .env
         echo MYSQL_ROOT_HOST=${{secrets.MYSQL_ROOT_HOST}} >> .env
+
+    - name: Inject .env for backend
+      run: |
+        touch .env
+        echo HOST=${{secrets.HOST}} >> .env
+        echo DOMAIN=${{secrets.DOMAIN}} >> .env
+        echo PORT=${{secrets.PORT}} >> .env
+        echo NODE_ENV=${{secrets.NODE_ENV}} >> .env
+        echo STRAPI_TELEMETRY_DISABLED=true >> .env
+        echo APP_KEYS=${{secrets.APP_KEYS}} >> .env
+        echo API_TOKEN_SALT=${{secrets.API_TOKEN_SALT}} >> .env
+        echo ADMIN_JWT_SECRET=${{secrets.ADMIN_JWT_SECRET}} >> .env
+        echo TRANSFER_TOKEN_SALT=${{secrets.TRANSFER_TOKEN_SALT}} >> .env
+        echo DATABASE_HOST=${{secrets.DATABASE_HOST}} >> .env
+        echo DATABASE_PORT=${{secrets.DATABASE_PORT}} >> .env
+        echo DATABASE_NAME=${{secrets.DATABASE_NAME}} >> .env
+        echo DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} >> .env
+        echo DATABASE_PASSWORD=${{secrets.DATABASE_PASSWORD}} >> .env
+        echo DATABASE_CLIENT=${{secrets.DATABASE_CLIENT}} >> .env
+        echo MYSQL_USER=${{secrets.MYSQL_USER}} >> .env
+        echo MYSQL_ROOT_PASSWORD=${{secrets.MYSQL_ROOT_PASSWORD}} >> .env
+        echo MYSQL_PASSWORD=${{secrets.MYSQL_PASSWORD}} >> .env
+        echo MYSQL_DATABASE=${{secrets.MYSQL_DATABASE}} >> .env
+        echo MYSQL_ROOT_HOST=${{secrets.MYSQL_ROOT_HOST}} >> .env
       working-directory: backend
 
     - name: Run docker-compose
