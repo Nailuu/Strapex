@@ -14,11 +14,13 @@ export interface IdkParagraph extends Struct.ComponentSchema {
 export interface IdkImageDescription extends Struct.ComponentSchema {
   collectionName: 'components_idk_image_descriptions';
   info: {
-    displayName: 'Image + Description';
+    displayName: 'Image/Video + Description';
     icon: 'picture';
+    description: '';
   };
   attributes: {
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Media: Schema.Attribute.Media<'images' | 'videos'> &
+      Schema.Attribute.Required;
     Description: Schema.Attribute.Text;
   };
 }
@@ -44,10 +46,8 @@ export interface IdkCarousel extends Struct.ComponentSchema {
     description: '';
   };
   attributes: {
-    Images: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    Medias: Schema.Attribute.Media<'images' | 'videos', true> &
+      Schema.Attribute.Required;
     Description: Schema.Attribute.Text;
   };
 }

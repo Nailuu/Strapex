@@ -498,7 +498,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Title: Schema.Attribute.String;
-    Cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Cover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     Content: Schema.Attribute.DynamicZone<
       [
         'idk.image-description',

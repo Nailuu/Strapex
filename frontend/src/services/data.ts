@@ -3,7 +3,7 @@ export function getStrapiLocalURL() {
 }
 
 export function getStrapiExternalURL() {
-    return "https://manon-cooking-garden.ovh";
+    return "https://" + process.env.NEXT_PUBLIC_DOMAIN;
 }
 
 // bearer = true, only works in client component because of cookies recovery library
@@ -16,7 +16,7 @@ export async function getStrapiData(path: string, qs: string, authToken: string 
         baseURL = getStrapiExternalURL();
     else
         baseURL = getStrapiLocalURL();
-    
+
     const url = new URL(path, baseURL);
     url.search = qs;
 

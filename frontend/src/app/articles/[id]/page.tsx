@@ -1,7 +1,7 @@
 import Carousel from "@/components/Carousel";
 import { Header } from "@/components/Header";
 import HeaderParagraph from "@/components/HeaderParagraph";
-import ImageDescription from "@/components/ImageDescription";
+import MediaDescription from "@/components/MediaDescription";
 import Paragraph from "@/components/Paragraph";
 import { Button } from "@/components/ui/button";
 import { getStrapiData, getStrapiExternalURL, getStrapiLocalURL } from "@/services/data";
@@ -35,10 +35,11 @@ interface ContentItem {
     [key: string]: any;
 }
 
-export interface StrapiImage {
+export interface StrapiMedia {
     url: string;
     width: string;
     height: string;
+    mime: string;
 }
 
 const renderContent = (content: ContentItem) => {
@@ -50,10 +51,10 @@ const renderContent = (content: ContentItem) => {
             return <HeaderParagraph key={content.id} title={content.Title} text={content.Text} />;
 
         case 'idk.image-description':
-            return <ImageDescription key={content.id} description={content.Description} image={content.Image as StrapiImage} />;
+            return <MediaDescription key={content.id} description={content.Description} media={content.Media as StrapiMedia} />;
 
         case 'idk.carousel':
-            return <Carousel key={content.id} images={content.Images as StrapiImage[]} description={content.Description} />;
+            return <Carousel key={content.id} medias={content.Medias as StrapiMedia[]} description={content.Description} />;
 
         default:
             return null;
@@ -81,16 +82,16 @@ const query = qs.stringify({
                 "idk.image-description": {
                     populate: {
                         fields: ["Description"],
-                        Image: {
-                            fields: ["url", "width", "height"],
+                        Media: {
+                            fields: ["url", "width", "height", "mime"],
                         },
                     },
                 },
                 "idk.carousel": {
                     populate: {
                         fields: ["Description"],
-                        Images: {
-                            fields: ["url", "width", "height"],
+                        Medias: {
+                            fields: ["url", "width", "height", "mime"],
                         },
                     },
                 },

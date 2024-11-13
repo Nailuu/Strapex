@@ -1,20 +1,20 @@
 {
   "collectionName": "components_idk_image_descriptions",
   "info": {
-    "displayName": "Image + Description",
-    "icon": "picture"
+    "displayName": "Image/Video + Description",
+    "icon": "picture",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Image": {
+    "Media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+        "videos"
+      ]
     },
     "Description": {
       "type": "text"

@@ -7,29 +7,37 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { StrapiImage } from "@/app/articles/[id]/page"
+import { StrapiMedia } from "@/app/articles/[id]/page"
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { getStrapiExternalURL } from "@/services/data";
 
 interface CarouselProps {
-    images: StrapiImage[];
+    medias: StrapiMedia[];
     description: string;
 }
 
-const Carousel = ({ images, description }: Readonly<CarouselProps>) => {
+const Carousel = ({ medias, description }: Readonly<CarouselProps>) => {
     return (
         <div className="flex flex-col items-center w-full">
             <CarouselUI className="my-2 md:my-4 w-[250px] md:w-[625px] lg:w-full max-w-[1000px]">
                 <CarouselContent>
-                    {images.map((image: StrapiImage, index) => (
+                    {medias.map((media: StrapiMedia, index) => (
                         <CarouselItem key={index}>
                             <AspectRatio ratio={4 / 3} className="overflow-hidden rounded-lg">
-                                <img
-                                    width={Number(image.width)}
-                                    height={Number(image.height)}
-                                    className="object-cover w-full h-full"
-                                    src={getStrapiExternalURL() + image.url}
-                                />
+                                {(String(media.mime).startsWith("image/")) && (
+                                    <img
+                                        width={Number(media.width)}
+                                        height={Number(media.height)}
+                                        className="object-cover w-full h-full"
+                                        src={getStrapiExternalURL() + media.url}
+                                    />)}
+                                {(String(media.mime).startsWith("video/")) && (
+                                    <video
+                                        className="w-full h-full"
+                                        src={getStrapiExternalURL() + media.url}
+                                        controls>
+                                        Your browser does not support the video tag.
+                                    </video>)}
                             </AspectRatio>
                         </CarouselItem>
                     ))}

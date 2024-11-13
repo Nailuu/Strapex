@@ -7,15 +7,13 @@
   },
   "options": {},
   "attributes": {
-    "Images": {
+    "Medias": {
       "type": "media",
       "multiple": true,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "videos"
       ]
     },
     "Description": {
