@@ -35,7 +35,7 @@ jobs:
         echo DATABASE_PASSWORD=${{secrets.DATABASE_PASSWORD}} >> .env
         echo DATABASE_CLIENT=${{secrets.DATABASE_CLIENT}} >> .env
         echo MYSQL_USER=${{secrets.MYSQL_USER}} >> .env
-        echo MYSQL_ROOT=${{secrets.MYSQL_ROOT}} >> .env
+        echo MYSQL_ROOT_PASSWORD=${{secrets.MYSQL_ROOT_PASSWORD}} >> .env
         echo MYSQL_PASSWORD=${{secrets.MYSQL_PASSWORD}} >> .env
         echo MYSQL_DATABASE=${{secrets.MYSQL_DATABASE}} >> .env
         echo MYSQL_ROOT_HOST=${{secrets.MYSQL_ROOT_HOST}} >> .env
