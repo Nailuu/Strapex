@@ -39,6 +39,7 @@ jobs:
         echo MYSQL_PASSWORD=${{secrets.MYSQL_PASSWORD}} >> .env
         echo MYSQL_DATABASE=${{secrets.MYSQL_DATABASE}} >> .env
         echo MYSQL_ROOT_HOST=${{secrets.MYSQL_ROOT_HOST}} >> .env
+      working-directory: backend
 
     - name: Run docker-compose
       run: |
